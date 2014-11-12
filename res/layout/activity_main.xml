@@ -6,14 +6,14 @@
     android:orientation="vertical"
     tools:context="com.example.dummy.MainActivity" >
     
-    <View
+    <com.exemplo.dummy.views.CustomViewShadow
         android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:background="@color/bar"
-        android:scrollbars="vertical"
-        android:translationZ="10dp" />
+        android:translationZ="2dp" />
+<!--         android:background="@color/bar" -->
+        
 
     <!-- A RecyclerView with some commonly used attributes -->
 

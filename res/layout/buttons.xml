@@ -20,12 +20,9 @@
     <Button
         android:id="@+id/button1"
         style="@style/ButtonTheme"
-        android:layout_width="50dp"
+        android:layout_width="72dp"
         android:layout_height="30dp"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"/>
 	
-    <View android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/bar"/>
 </RelativeLayout>

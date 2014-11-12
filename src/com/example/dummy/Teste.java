@@ -1,10 +1,9 @@
 package com.example.dummy;
 
 import com.example.dummy.adapters.MyRecyclerViewAdapter;
+import com.exemplo.dummy.views.CustomViewShadow;
 import com.exemplo.dummy.views.FloatingActionButton;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -13,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.widget.Toast;
 
 public class Teste extends Activity implements View.OnClickListener {
@@ -24,7 +22,7 @@ public class Teste extends Activity implements View.OnClickListener {
 	private/* RecyclerView.LayoutManager */LinearLayoutManager mLayoutManager;
 
 	// Testing Reveal
-	private View mView;
+	private CustomViewShadow mView;
 	// private View mView2;
 	boolean mRevealState = false;
 
@@ -37,7 +35,7 @@ public class Teste extends Activity implements View.OnClickListener {
 		setContentView(R.layout.activity_main);
 
 		mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-		mView = findViewById(R.id.view1);
+		mView = (CustomViewShadow) findViewById(R.id.view1);
 		// mView2 = findViewById(R.id.view2);
 		//
 		// mView.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +149,7 @@ public class Teste extends Activity implements View.OnClickListener {
 								getResources().getDrawable(
 										android.R.drawable.ic_input_add))
 						.withButtonColor(
-								getResources().getColor(R.color.accent))
+								getResources().getColor(R.color.snow))
 						.withGravity(Gravity.TOP | Gravity.END)
 						.withMarginsInPixels(0, mView.getBottom(), 0, 0)
 						.create();
@@ -164,58 +162,59 @@ public class Teste extends Activity implements View.OnClickListener {
 	@Override
 	public void onClick(View v) {
 		Log.d(TAG, "mRevealState: " + mRevealState);
-		if (mRevealState) {
-			// TODO Auto-generated method stub
-			// get the center for the clipping circle
-			int cx = (mView.getLeft() + mView.getRight()) / 2;
-			int cy = (mView.getTop() + mView.getBottom()) / 2;
-			Log.d(TAG, "[Teste] mView.getLeft(): " + mView.getLeft()
-					+ " mView.getRight() " + mView.getRight());
-			Log.d(TAG, "[Teste] mView.getTop(): " + mView.getTop()
-					+ " mView.getBottom() " + mView.getBottom());
-			Log.d(TAG, "[Teste] cx: " + cx + " cy " + cy);
-
-			// get the final radius for the clipping circle
-			int finalRadius = Math.max(mView.getWidth(), mView.getHeight());
-
-			// create the animator for this view (the start radius is
-			// zero)
-			Animator anim = ViewAnimationUtils.createCircularReveal(mView, cx,
-					cy, 0, finalRadius);
-
-			// make the view visible and start the animation
-			mView.setVisibility(View.VISIBLE);
-			anim.start();
-			mRevealState = false;
-		} else {
-			// get the center for the clipping circle
-			int cx = (mView.getLeft() + mView.getRight()) / 2;
-			int cy = (mView.getTop() + mView.getBottom()) / 2;
-			Log.d(TAG, "[Teste] mView.getLeft(): " + mView.getLeft()
-					+ " mView.getRight() " + mView.getRight());
-			Log.d(TAG, "[Teste] mView.getTop(): " + mView.getTop()
-					+ " mView.getBottom() " + mView.getBottom());
-			Log.d(TAG, "[Teste] cx: " + cx + " cy " + cy);
-
-			// get the initial radius for the clipping circle
-			int initialRadius = mView.getWidth();
-
-			// create the animation (the final radius is zero)
-			Animator anim = ViewAnimationUtils.createCircularReveal(mView, cx,
-					cy, initialRadius, 0);
-
-			// make the view invisible when the animation is done
-			anim.addListener(new AnimatorListenerAdapter() {
-				@Override
-				public void onAnimationEnd(Animator animation) {
-					super.onAnimationEnd(animation);
-					mView.setVisibility(View.GONE);
-				}
-			});
-
-			// start the animation
-			anim.start();
-			mRevealState = true;
-		}
+//		if (mRevealState) {
+//			// TODO Auto-generated method stub
+//			// get the center for the clipping circle
+//			int cx = (mView.getLeft() + mView.getRight()) / 2;
+//			int cy = (mView.getTop() + mView.getBottom()) / 2;
+//			Log.d(TAG, "[Teste] mView.getLeft(): " + mView.getLeft()
+//					+ " mView.getRight() " + mView.getRight());
+//			Log.d(TAG, "[Teste] mView.getTop(): " + mView.getTop()
+//					+ " mView.getBottom() " + mView.getBottom());
+//			Log.d(TAG, "[Teste] cx: " + cx + " cy " + cy);
+//
+//			// get the final radius for the clipping circle
+//			int finalRadius = Math.max(mView.getWidth(), mView.getHeight());
+//
+//			// create the animator for this view (the start radius is
+//			// zero)
+//			Animator anim = ViewAnimationUtils.createCircularReveal(mView, cx,
+//					cy, 0, finalRadius);
+//
+//			// make the view visible and start the animation
+//			mView.setVisibility(View.VISIBLE);
+//			anim.start();
+//			mRevealState = false;
+//		} else {
+//			// get the center for the clipping circle
+//			int cx = (mView.getLeft() + mView.getRight()) / 2;
+//			int cy = (mView.getTop() + mView.getBottom()) / 2;
+//			Log.d(TAG, "[Teste] mView.getLeft(): " + mView.getLeft()
+//					+ " mView.getRight() " + mView.getRight());
+//			Log.d(TAG, "[Teste] mView.getTop(): " + mView.getTop()
+//					+ " mView.getBottom() " + mView.getBottom());
+//			Log.d(TAG, "[Teste] cx: " + cx + " cy " + cy);
+//
+//			// get the initial radius for the clipping circle
+//			int initialRadius = mView.getWidth();
+//
+//			// create the animation (the final radius is zero)
+//			Animator anim = ViewAnimationUtils.createCircularReveal(mView, cx,
+//					cy, initialRadius, 0);
+//
+//			// make the view invisible when the animation is done
+//			anim.addListener(new AnimatorListenerAdapter() {
+//				@Override
+//				public void onAnimationEnd(Animator animation) {
+//					super.onAnimationEnd(animation);
+//					mView.setVisibility(View.GONE);
+//				}
+//			});
+//
+//			// start the animation
+//			anim.start();
+//			mRevealState = true;
+//		}
+		Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
 	}
 }

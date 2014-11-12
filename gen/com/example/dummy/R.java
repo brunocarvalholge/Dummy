@@ -12,9 +12,12 @@ public final class R {
     }
     public static final class color {
         public static final int accent=0x7f040003;
+        public static final int app_background=0x7f040004;
         public static final int bar=0x7f040001;
+        public static final int gray=0x7f040005;
         public static final int primary=0x7f040000;
         public static final int primary_dark=0x7f040002;
+        public static final int snow=0x7f040006;
     }
     public static final class dimen {
         public static final int button_elevation=0x7f050001;
@@ -22,11 +25,8 @@ public final class R {
         public static final int fab_size=0x7f050000;
     }
     public static final class drawable {
-        public static final int anim=0x7f020000;
-        public static final int btn=0x7f020001;
-        public static final int fab=0x7f020002;
-        public static final int ripple=0x7f020003;
-        public static final int txt=0x7f020004;
+        public static final int btn=0x7f020000;
+        public static final int txt=0x7f020001;
     }
     public static final class id {
         public static final int button=0x7f080003;
@@ -44,9 +44,25 @@ public final class R {
         public static final int app_name=0x7f060000;
     }
     public static final class style {
-        /**  inherit from the material theme 
+        /**  Base application theme. 
+ inherit from the material theme 
          */
         public static final int AppTheme=0x7f070000;
-        public static final int ButtonTheme=0x7f070001;
+        /**  Button styles 
+         */
+        public static final int ButtonTheme=0x7f070006;
+        /**  ActionBar styles 
+         */
+        public static final int MyActionBar=0x7f070001;
+        /**  ActionBar tabs text styles 
+         */
+        public static final int MyActionBarTabText=0x7f070003;
+        /**  ActionBar title text 
+         */
+        public static final int MyActionBarTitleText=0x7f070002;
+        public static final int spinnerDropDownItemStyle=0x7f070005;
+        /**  Spinner styles 
+         */
+        public static final int spinnerItemStyle=0x7f070004;
     }
 }
