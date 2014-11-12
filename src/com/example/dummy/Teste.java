@@ -57,7 +57,8 @@ public class Teste extends Activity implements View.OnClickListener {
 		mRecyclerView.setLayoutManager(mLayoutManager);
 
 		// specify an adapter (see also next example)
-		String[] data = { "Button1", "Button2", "Button3", "Button4", "Button5", "Button6", "Button7", "Button8" };
+		String[] data = { "A Gasto", "B Gasto", "C Gasto", "D Gasto",
+				"E Gasto", "F Gasto", "G Gasto", "H Gasto" };
 		mAdapter = new MyRecyclerViewAdapter(data, this);
 		mRecyclerView.setAdapter(mAdapter);
 
@@ -82,7 +83,8 @@ public class Teste extends Activity implements View.OnClickListener {
 				int fisrtC = mLayoutManager
 						.findFirstCompletelyVisibleItemPosition();
 				if (fisrt == fisrtC && fisrtC == 0) {
-					Log.d(TAG, "[Test][onScrollStateChanged] fisrt == fisrtC && fisrtC == 0");
+					Log.d(TAG,
+							"[Test][onScrollStateChanged] fisrt == fisrtC && fisrtC == 0");
 				}
 			}
 
@@ -93,7 +95,8 @@ public class Teste extends Activity implements View.OnClickListener {
 				int fisrtC = mLayoutManager
 						.findFirstCompletelyVisibleItemPosition();
 				if (fisrt == fisrtC && fisrtC == 0) {
-					Log.d(TAG, "[Test][onScrolled] fisrt == fisrtC && fisrtC == 0");
+					Log.d(TAG,
+							"[Test][onScrolled] fisrt == fisrtC && fisrtC == 0");
 				}
 				super.onScrolled(recyclerView, dx, dy);
 			}
@@ -112,111 +115,111 @@ public class Teste extends Activity implements View.OnClickListener {
 		 * GestureDetectorCompat(this, new RecyclerViewDemoOnGestureListener());
 		 */
 
-//		ViewTreeObserver vto = mView.getViewTreeObserver();
-//		if (vto.isAlive()) {
-//			vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//				@Override
-//				public void onGlobalLayout() {
-//					if (mView.getViewTreeObserver().isAlive()) {
-//						mView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//					}
-//					mFabButton = new FloatingActionButton.Builder(Teste.this)
-//							.withDrawable(
-//									getResources().getDrawable(
-//											android.R.drawable.ic_input_add))
-//							.withButtonColor(
-//									getResources().getColor(R.color.accent))
-//							.withGravity(Gravity.TOP | Gravity.END)
-//							.withMarginsInPixels(0, mView.getBottom(), 0, 0)
-//							.create();
-//					mFabButton.setOnClickListener(Teste.this);
-//				}
-//			});
-//		}
-		
+		// ViewTreeObserver vto = mView.getViewTreeObserver();
+		// if (vto.isAlive()) {
+		// vto.addOnGlobalLayoutListener(new
+		// ViewTreeObserver.OnGlobalLayoutListener() {
+		// @Override
+		// public void onGlobalLayout() {
+		// if (mView.getViewTreeObserver().isAlive()) {
+		// mView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+		// }
+		// mFabButton = new FloatingActionButton.Builder(Teste.this)
+		// .withDrawable(
+		// getResources().getDrawable(
+		// android.R.drawable.ic_input_add))
+		// .withButtonColor(
+		// getResources().getColor(R.color.accent))
+		// .withGravity(Gravity.TOP | Gravity.END)
+		// .withMarginsInPixels(0, mView.getBottom(), 0, 0)
+		// .create();
+		// mFabButton.setOnClickListener(Teste.this);
+		// }
+		// });
+		// }
+
 		mView.post(new Runnable() {
 
-	        @Override
-	        public void run() {
-	            // safe to get height and width here   
+			@Override
+			public void run() {
+				// safe to get height and width here
 				mFabButton = new FloatingActionButton.Builder(Teste.this)
 						.withDrawable(
-								getResources().getDrawable(
-										android.R.drawable.ic_input_add))
-						.withButtonColor(
-								getResources().getColor(R.color.snow))
+								getResources().getDrawable(android.R.drawable.ic_input_add))
+						.withButtonColor(getResources().getColor(R.color.snow))
 						.withGravity(Gravity.TOP | Gravity.END)
-						.withMarginsInPixels(0, mView.getBottom(), convertToPixels(6), 0)
-						.create();
+						.withMarginsInPixels(0, mView.getBottom(),
+								convertToPixels(6), 0).create();
 				mFabButton.setOnClickListener(Teste.this);
-	        }
+			}
 
-	    });
+		});
 	}
-	
-	// The calculation (value * scale + 0.5f) is a widely used to convert to dps to pixel units
-    // based on density scale
-    // see developer.android.com (Supporting Multiple Screen Sizes)
-    private int convertToPixels(int dp){
-      return (int) (dp * getResources().getDisplayMetrics().density + 0.5f) ;
-    }
+
+	// The calculation (value * scale + 0.5f) is a widely used to convert to dps
+	// to pixel units
+	// based on density scale
+	// see developer.android.com (Supporting Multiple Screen Sizes)
+	private int convertToPixels(int dp) {
+		return (int) (dp * getResources().getDisplayMetrics().density + 0.5f);
+	}
 
 	@Override
 	public void onClick(View v) {
 		Log.d(TAG, "mRevealState: " + mRevealState);
-//		if (mRevealState) {
-//			// TODO Auto-generated method stub
-//			// get the center for the clipping circle
-//			int cx = (mView.getLeft() + mView.getRight()) / 2;
-//			int cy = (mView.getTop() + mView.getBottom()) / 2;
-//			Log.d(TAG, "[Teste] mView.getLeft(): " + mView.getLeft()
-//					+ " mView.getRight() " + mView.getRight());
-//			Log.d(TAG, "[Teste] mView.getTop(): " + mView.getTop()
-//					+ " mView.getBottom() " + mView.getBottom());
-//			Log.d(TAG, "[Teste] cx: " + cx + " cy " + cy);
-//
-//			// get the final radius for the clipping circle
-//			int finalRadius = Math.max(mView.getWidth(), mView.getHeight());
-//
-//			// create the animator for this view (the start radius is
-//			// zero)
-//			Animator anim = ViewAnimationUtils.createCircularReveal(mView, cx,
-//					cy, 0, finalRadius);
-//
-//			// make the view visible and start the animation
-//			mView.setVisibility(View.VISIBLE);
-//			anim.start();
-//			mRevealState = false;
-//		} else {
-//			// get the center for the clipping circle
-//			int cx = (mView.getLeft() + mView.getRight()) / 2;
-//			int cy = (mView.getTop() + mView.getBottom()) / 2;
-//			Log.d(TAG, "[Teste] mView.getLeft(): " + mView.getLeft()
-//					+ " mView.getRight() " + mView.getRight());
-//			Log.d(TAG, "[Teste] mView.getTop(): " + mView.getTop()
-//					+ " mView.getBottom() " + mView.getBottom());
-//			Log.d(TAG, "[Teste] cx: " + cx + " cy " + cy);
-//
-//			// get the initial radius for the clipping circle
-//			int initialRadius = mView.getWidth();
-//
-//			// create the animation (the final radius is zero)
-//			Animator anim = ViewAnimationUtils.createCircularReveal(mView, cx,
-//					cy, initialRadius, 0);
-//
-//			// make the view invisible when the animation is done
-//			anim.addListener(new AnimatorListenerAdapter() {
-//				@Override
-//				public void onAnimationEnd(Animator animation) {
-//					super.onAnimationEnd(animation);
-//					mView.setVisibility(View.GONE);
-//				}
-//			});
-//
-//			// start the animation
-//			anim.start();
-//			mRevealState = true;
-//		}
+		// if (mRevealState) {
+		// // TODO Auto-generated method stub
+		// // get the center for the clipping circle
+		// int cx = (mView.getLeft() + mView.getRight()) / 2;
+		// int cy = (mView.getTop() + mView.getBottom()) / 2;
+		// Log.d(TAG, "[Teste] mView.getLeft(): " + mView.getLeft()
+		// + " mView.getRight() " + mView.getRight());
+		// Log.d(TAG, "[Teste] mView.getTop(): " + mView.getTop()
+		// + " mView.getBottom() " + mView.getBottom());
+		// Log.d(TAG, "[Teste] cx: " + cx + " cy " + cy);
+		//
+		// // get the final radius for the clipping circle
+		// int finalRadius = Math.max(mView.getWidth(), mView.getHeight());
+		//
+		// // create the animator for this view (the start radius is
+		// // zero)
+		// Animator anim = ViewAnimationUtils.createCircularReveal(mView, cx,
+		// cy, 0, finalRadius);
+		//
+		// // make the view visible and start the animation
+		// mView.setVisibility(View.VISIBLE);
+		// anim.start();
+		// mRevealState = false;
+		// } else {
+		// // get the center for the clipping circle
+		// int cx = (mView.getLeft() + mView.getRight()) / 2;
+		// int cy = (mView.getTop() + mView.getBottom()) / 2;
+		// Log.d(TAG, "[Teste] mView.getLeft(): " + mView.getLeft()
+		// + " mView.getRight() " + mView.getRight());
+		// Log.d(TAG, "[Teste] mView.getTop(): " + mView.getTop()
+		// + " mView.getBottom() " + mView.getBottom());
+		// Log.d(TAG, "[Teste] cx: " + cx + " cy " + cy);
+		//
+		// // get the initial radius for the clipping circle
+		// int initialRadius = mView.getWidth();
+		//
+		// // create the animation (the final radius is zero)
+		// Animator anim = ViewAnimationUtils.createCircularReveal(mView, cx,
+		// cy, initialRadius, 0);
+		//
+		// // make the view invisible when the animation is done
+		// anim.addListener(new AnimatorListenerAdapter() {
+		// @Override
+		// public void onAnimationEnd(Animator animation) {
+		// super.onAnimationEnd(animation);
+		// mView.setVisibility(View.GONE);
+		// }
+		// });
+		//
+		// // start the animation
+		// anim.start();
+		// mRevealState = true;
+		// }
 		Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
 	}
 }

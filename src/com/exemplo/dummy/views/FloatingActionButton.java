@@ -1,5 +1,7 @@
 package com.exemplo.dummy.views;
 
+import com.example.dummy.R;
+
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
@@ -50,7 +52,7 @@ public class FloatingActionButton extends View {
     setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
     mButtonPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    mButtonPaint.setColor(FloatingActionButtonColor);
+    mButtonPaint.setColor(context.getResources().getColor(R.color.primary_dark));
     mButtonPaint.setStyle(Paint.Style.FILL);
     mButtonPaint.setShadowLayer(5.0f, 0.0f, 2.5f, Color.argb(100, 0, 0, 0));
     mDrawablePaint = new Paint(Paint.ANTI_ALIAS_FLAG);

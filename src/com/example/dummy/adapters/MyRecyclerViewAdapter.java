@@ -5,11 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-
 import com.example.dummy.R;
 import com.exemplo.dummy.provider.CachedFileProvider;
 import com.exemplo.dummy.views.CircleView;
-
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -67,6 +66,7 @@ public class MyRecyclerViewAdapter extends
 	}
 
 	// Replace the contents of a view (invoked by the layout manager)
+	@SuppressLint("DefaultLocale")
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int position) {
 		// - get element from your dataset at this position
@@ -87,6 +87,7 @@ public class MyRecyclerViewAdapter extends
 		}
 
 		holder.mText.setText(mDataset[position]);
+		holder.mCircle.setText(mDataset[position].substring(0, 1).toUpperCase());
 		holder.mButton.setText(String.valueOf(position));
 		holder.mButton.setId(position);
 		final int button = position;

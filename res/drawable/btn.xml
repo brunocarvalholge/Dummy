@@ -16,7 +16,7 @@
   <item>
     <shape>
       <solid
-          android:color="@color/primary_dark"
+          android:color="@color/primary"
 		/>
       <corners
           android:radius="6dp" />

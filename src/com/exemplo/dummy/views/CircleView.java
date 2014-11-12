@@ -6,9 +6,9 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
+import android.widget.TextView;
 
-public class CircleView extends View {
+public class CircleView extends TextView {
 	private ShapeDrawable mDrawable;
 	//private Context mContext;
 	
@@ -67,5 +67,6 @@ public class CircleView extends View {
 	
 	protected void onDraw(Canvas canvas) {
 		mDrawable.draw(canvas);
+		super.onDraw(canvas);
 	}
 }
