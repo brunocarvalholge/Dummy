@@ -26,12 +26,14 @@ public final class R {
         public static final int btn=0x7f020001;
         public static final int fab=0x7f020002;
         public static final int ripple=0x7f020003;
+        public static final int txt=0x7f020004;
     }
     public static final class id {
-        public static final int button1=0x7f080004;
+        public static final int button=0x7f080003;
+        public static final int button1=0x7f080005;
         public static final int container=0x7f080000;
         public static final int my_recycler_view=0x7f080002;
-        public static final int text1=0x7f080003;
+        public static final int text1=0x7f080004;
         public static final int view1=0x7f080001;
     }
     public static final class layout {

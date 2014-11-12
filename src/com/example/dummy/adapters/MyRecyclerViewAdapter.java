@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 
 import com.example.dummy.R;
 import com.exemplo.dummy.provider.CachedFileProvider;
+import com.exemplo.dummy.views.CircleView;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -34,6 +35,7 @@ public class MyRecyclerViewAdapter extends
 	// you provide access to all the views for a data item in a view holder
 	public static class ViewHolder extends RecyclerView.ViewHolder {
 		// each data item is just a string in this case
+		public CircleView mCircle;
 		public TextView mText;
 		public Button mButton;
 
@@ -41,6 +43,7 @@ public class MyRecyclerViewAdapter extends
 			super(v);
 			mButton = (Button) v.findViewById(R.id.button1);
 			mText = (TextView) v.findViewById(R.id.text1);
+			mCircle = (CircleView) v.findViewById(R.id.button);
 		}
 	}
 
@@ -68,6 +71,21 @@ public class MyRecyclerViewAdapter extends
 	public void onBindViewHolder(ViewHolder holder, int position) {
 		// - get element from your dataset at this position
 		// - replace the contents of the view with that element
+		switch (position % 4) {
+		case 0:
+			holder.mCircle.setColor(mContext.getResources().getColor(R.color.accent));
+			break;
+		case 1:
+			holder.mCircle.setColor(mContext.getResources().getColor(R.color.bar));
+			break;
+		case 2:
+			holder.mCircle.setColor(mContext.getResources().getColor(R.color.primary));
+			break;
+		default:
+			holder.mCircle.setColor(mContext.getResources().getColor(R.color.primary_dark));
+			break;
+		}
+
 		holder.mText.setText(mDataset[position]);
 		holder.mButton.setText(String.valueOf(position));
 		holder.mButton.setId(position);
@@ -101,13 +119,6 @@ public class MyRecyclerViewAdapter extends
 
 					Toast.makeText(mContext, "App launcher removed",
 							Toast.LENGTH_LONG).show();
-					break;
-				case 1:
-					if (pm == null) {
-						Toast.makeText(mContext, "pm == null",
-								Toast.LENGTH_LONG).show();
-						return;
-					}
 
 					cName = new ComponentName("com.example.dummy",
 							"com.example.dummy.MainActivity");
@@ -177,12 +188,12 @@ public class MyRecyclerViewAdapter extends
 	public int getItemCount() {
 		return mDataset.length;
 	}
-	
+
 	public static void createCachedFile(Context context, String fileName,
 			String content) throws IOException {
 
 		File cacheFile = new File(context.getFilesDir(), fileName);
-		if(!cacheFile.exists()){
+		if (!cacheFile.exists()) {
 			cacheFile.mkdir();
 		}
 		Log.d("TAG", cacheFile.getAbsolutePath());
