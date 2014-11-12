@@ -57,12 +57,7 @@ public class Teste extends Activity implements View.OnClickListener {
 		mRecyclerView.setLayoutManager(mLayoutManager);
 
 		// specify an adapter (see also next example)
-		String[] data = { "Button1", "Button2", "Button3", "Button2",
-				"Button3", "Button2", "Button3", "Button2", "Button3",
-				"Button2", "Button3", "Button2", "Button3", "Button2",
-				"Button3", "Button2", "Button3", "Button2", "Button3",
-				"Button2", "Button3", "Button2", "Button3", "Button2",
-				"Button3" };
+		String[] data = { "Button1", "Button2", "Button3", "Button4", "Button5", "Button6", "Button7", "Button8" };
 		mAdapter = new MyRecyclerViewAdapter(data, this);
 		mRecyclerView.setAdapter(mAdapter);
 
@@ -151,13 +146,20 @@ public class Teste extends Activity implements View.OnClickListener {
 						.withButtonColor(
 								getResources().getColor(R.color.snow))
 						.withGravity(Gravity.TOP | Gravity.END)
-						.withMarginsInPixels(0, mView.getBottom(), 0, 0)
+						.withMarginsInPixels(0, mView.getBottom(), convertToPixels(6), 0)
 						.create();
 				mFabButton.setOnClickListener(Teste.this);
 	        }
 
 	    });
 	}
+	
+	// The calculation (value * scale + 0.5f) is a widely used to convert to dps to pixel units
+    // based on density scale
+    // see developer.android.com (Supporting Multiple Screen Sizes)
+    private int convertToPixels(int dp){
+      return (int) (dp * getResources().getDisplayMetrics().density + 0.5f) ;
+    }
 
 	@Override
 	public void onClick(View v) {
