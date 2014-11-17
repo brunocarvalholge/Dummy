@@ -145,8 +145,8 @@ public class Teste extends Activity implements View.OnClickListener {
 				// safe to get height and width here
 				mFabButton = new FloatingActionButton.Builder(Teste.this)
 						.withDrawable(
-								getResources().getDrawable(android.R.drawable.ic_input_add))
-						.withButtonColor(getResources().getColor(R.color.snow))
+								getResources().getDrawable(R.drawable.ic_action_new))
+						.withButtonColor(getResources().getColor(R.color.primary))
 						.withGravity(Gravity.TOP | Gravity.END)
 						.withMarginsInPixels(0, mView.getBottom(),
 								convertToPixels(6), 0).create();

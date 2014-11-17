@@ -35,7 +35,7 @@ public class FloatingActionButton extends View {
   public FloatingActionButton(Context context) {
     super(context);
     this.context = context;
-    init(Color.WHITE);
+    init(context.getResources().getColor(R.color.primary));
   }
 
   public void setFloatingActionButtonColor(int FloatingActionButtonColor) {
@@ -52,7 +52,7 @@ public class FloatingActionButton extends View {
     setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
     mButtonPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    mButtonPaint.setColor(context.getResources().getColor(R.color.primary_dark));
+    mButtonPaint.setColor(FloatingActionButtonColor);
     mButtonPaint.setStyle(Paint.Style.FILL);
     mButtonPaint.setShadowLayer(5.0f, 0.0f, 2.5f, Color.argb(100, 0, 0, 0));
     mDrawablePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -72,9 +72,11 @@ public class FloatingActionButton extends View {
 @Override
   public boolean onTouchEvent(MotionEvent event) {
     if (event.getAction() == MotionEvent.ACTION_UP) {
-      setAlpha(1.0f);
+      //setAlpha(1.0f);
+    	setFloatingActionButtonColor(context.getResources().getColor(R.color.primary));
     } else if (event.getAction() == MotionEvent.ACTION_DOWN) {
-      setAlpha(0.6f);
+      //setAlpha(0.6f);
+    	setFloatingActionButtonColor(context.getResources().getColor(R.color.bar));
     }
     return super.onTouchEvent(event);
   }
